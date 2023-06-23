@@ -17,6 +17,7 @@ struct ShowGallery: UIViewControllerRepresentable{
     @Binding var isGalleryShowing: Bool
     @Binding var predictionLabel: String
     @Binding var predictionConf: Double
+    var predict: Bool
     
     func makeUIViewController(context: Context) -> some UIViewController{
         Models.copyEmptyNearestNeighbors() //neu
@@ -45,16 +46,19 @@ class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationContro
             DispatchQueue.main.async{
                 self.parent.selectedImage = image
                 //Linh Neu
-                let model = Models.loadTrainedNearestNeighbors()
-                let predictor = Predictor(model: model!)
-                let imageOptions: [MLFeatureValue.ImageOption: Any] = [
-                  .cropAndScale: VNImageCropAndScaleOption.scaleFill.rawValue
-                ]
-                let featureValue = try? MLFeatureValue(cgImage:                                      image.cgImage!, constraint: imageConstraint(model: model!), options: imageOptions)
-                let prediction = predictor.predict(image: featureValue!)
-                self.parent.predictionLabel = prediction!.label
-                self.parent.predictionConf = prediction!.confidence
+                if(self.parent.predict){
+                    let model = Models.loadTrainedNearestNeighbors()
+                    let predictor = Predictor(model: model!)
+                    let imageOptions: [MLFeatureValue.ImageOption: Any] = [
+                      .cropAndScale: VNImageCropAndScaleOption.scaleFill.rawValue
+                    ]
+                    let featureValue = try? MLFeatureValue(cgImage:                                      image.cgImage!, constraint: imageConstraint(model: model!), options: imageOptions)
+                    let prediction = predictor.predict(image: featureValue!)
+                    self.parent.predictionLabel = prediction!.label
+                    self.parent.predictionConf = prediction!.confidence
+                    print(prediction!.probabilities)
                 ///
+                }
             }
         }
         parent.isGalleryShowing = false

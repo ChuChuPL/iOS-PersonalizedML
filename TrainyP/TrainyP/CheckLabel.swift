@@ -8,6 +8,7 @@
 import Foundation
 
 struct CheckLabel{
+    
     func checkLabel(label: String) -> Bool {
       let newText = label
       // Don't accept characters that can cause problems in the file system.

@@ -12,6 +12,9 @@
 		EB09AC7D29F5A65F00C65154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB09AC7C29F5A65F00C65154 /* Assets.xcassets */; };
 		EB09AC8029F5A65F00C65154 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB09AC7F29F5A65F00C65154 /* Preview Assets.xcassets */; };
 		EB09AC8729F5BE1A00C65154 /* ShowGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB09AC8629F5BE1A00C65154 /* ShowGallery.swift */; };
+		EB97BEC62A33DB1D007DB75C /* LabelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB97BEC52A33DB1D007DB75C /* LabelModel.swift */; };
+		EB97BEC82A34C13E007DB75C /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB97BEC72A34C13D007DB75C /* TrainingView.swift */; };
+		EB97BECA2A34C159007DB75C /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB97BEC92A34C159007DB75C /* PredictionView.swift */; };
 		EBA5DAA72A168B4D0056B575 /* PersonalizedkNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EBA5DAA62A168B4D0056B575 /* PersonalizedkNN.mlmodel */; };
 		EBA5DAAB2A1691140056B575 /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = EBA5DAAA2A1691140056B575 /* Sources */; };
 		EBA5DAAD2A1BA7CC0056B575 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5DAAC2A1BA7CC0056B575 /* Models.swift */; };
@@ -32,6 +35,9 @@
 		EB09AC7C29F5A65F00C65154 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB09AC7F29F5A65F00C65154 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB09AC8629F5BE1A00C65154 /* ShowGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGallery.swift; sourceTree = "<group>"; };
+		EB97BEC52A33DB1D007DB75C /* LabelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelModel.swift; sourceTree = "<group>"; };
+		EB97BEC72A34C13D007DB75C /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
+		EB97BEC92A34C159007DB75C /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
 		EBA5DAA62A168B4D0056B575 /* PersonalizedkNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PersonalizedkNN.mlmodel; sourceTree = "<group>"; };
 		EBA5DAAA2A1691140056B575 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
 		EBA5DAAC2A1BA7CC0056B575 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 				EBA5DAA62A168B4D0056B575 /* PersonalizedkNN.mlmodel */,
 				EB09AC7829F5A65A00C65154 /* TrainyPApp.swift */,
 				EB09AC7A29F5A65A00C65154 /* ContentView.swift */,
+				EB97BEC92A34C159007DB75C /* PredictionView.swift */,
+				EB97BEC72A34C13D007DB75C /* TrainingView.swift */,
 				EB09AC7C29F5A65F00C65154 /* Assets.xcassets */,
 				EB09AC7E29F5A65F00C65154 /* Preview Content */,
 				EB09AC8629F5BE1A00C65154 /* ShowGallery.swift */,
@@ -91,6 +99,7 @@
 				EBA5DAAA2A1691140056B575 /* Sources */,
 				EBA5DABA2A1D51BD0056B575 /* CheckLabel.swift */,
 				EBA5DABC2A26B1660056B575 /* LabelsViewModel.swift */,
+				EB97BEC52A33DB1D007DB75C /* LabelModel.swift */,
 			);
 			path = TrainyP;
 			sourceTree = "<group>";
@@ -178,11 +187,14 @@
 				EBA5DAAF2A1BA89F0056B575 /* Helpers.swift in Sources */,
 				EBA5DAB32A1BFC090056B575 /* Labels.swift in Sources */,
 				EB09AC7929F5A65A00C65154 /* TrainyPApp.swift in Sources */,
+				EB97BEC62A33DB1D007DB75C /* LabelModel.swift in Sources */,
 				EBA5DAB72A1D17E70056B575 /* TrainNearestNeighborsViewController.swift in Sources */,
 				EBA5DABB2A1D51BD0056B575 /* CheckLabel.swift in Sources */,
+				EB97BEC82A34C13E007DB75C /* TrainingView.swift in Sources */,
 				EBA5DAB92A1D1DBE0056B575 /* ImageLoader.swift in Sources */,
 				EBA5DAA72A168B4D0056B575 /* PersonalizedkNN.mlmodel in Sources */,
 				EBA5DAB12A1BAF060056B575 /* Predictor.swift in Sources */,
+				EB97BECA2A34C159007DB75C /* PredictionView.swift in Sources */,
 				EB09AC8729F5BE1A00C65154 /* ShowGallery.swift in Sources */,
 				EBA5DABD2A26B1670056B575 /* LabelsViewModel.swift in Sources */,
 				EBA5DAAD2A1BA7CC0056B575 /* Models.swift in Sources */,

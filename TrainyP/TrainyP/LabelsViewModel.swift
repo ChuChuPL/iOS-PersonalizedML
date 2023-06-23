@@ -8,17 +8,52 @@
 import SwiftUI
 
 class LabelsViewModel: ObservableObject{
-    @Published private var updateLabels = Labels()
+    @Published private var selectedLabel = LabelModel()
+    @Published  var selectedImage : UIImage?
+    @Published var predictionLabel = "?"
+    @Published var predictionConf = 0.0
     
-    var labels: [String] {
+    var label: String {
         get {
-            updateLabels.labelNames
+            selectedLabel.label
+        }
+        set{
+            selectedLabel.label = newValue
         }
     }
     
-    func addLabel(label: String){
-        updateLabels.addLabel(label)
+    init() {
+      readSelectedLabel()
     }
+
+    private var selectedLabelURL: URL {
+      applicationDocumentsDirectory.appendingPathComponent("selectedLabel.json")
+    }
+
+    private func readSelectedLabel() {
+      do {
+        let data = try Data(contentsOf: selectedLabelURL)
+        label = try JSONDecoder().decode(String.self, from: data)
+          print("reading")
+      } catch {
+          label = selectedLabel.label
+      }
+    }
+
+    func saveSelectedLabel() {
+      do {
+        let data = try JSONEncoder().encode(label)
+        try data.write(to: selectedLabelURL)
+  //        self.pickerId += 1
+          print("saving")
+      } catch {
+        print("Error: \(error)")
+      }
+    }
+    
+//    func addLabel(label: String){
+//        updateLabels.addLabel(label)
+//    }
 }
 
 

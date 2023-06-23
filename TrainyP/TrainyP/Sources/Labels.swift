@@ -3,21 +3,12 @@ import Foundation
 /**
   Manages the class labels used by the k-NN and neural network models.
  */
-class Labels /*: ObservableObject*/{
-    //Model dazu muss gemacht werden für Label
-    /*@Published private var iconsModel = IconsModel()
-    var icons: [Icon] { get {
-    iconsModel.icons }
-    set {
-    iconsModel.icons = newValue
-    }
-    }*/
-    let maxLabels = 10
-//    var pickerId:Int = 0
+class Labels {
+  let maxLabels = 10
 
   // The dataset always has these three labels but the user can add their own.
 //  let builtinLabelNames = [ "✊", "✋", "✌️" ]
-//    let builtinLabelNames = [ "test8", "test9", "test10" ]
+    let builtinLabelNames = [ "test8", "test9", "test10" ]
 
   // The names of the labels as chosen by the user (plus the built-in ones).
   var labelNames: [String] = []
@@ -43,16 +34,14 @@ class Labels /*: ObservableObject*/{
   //
   // k-NN does not have this restriction, and the label names inside the k-NN's
   // mlmodel are always the ones chosen by the user.
-    
-    
-//  lazy var internalLabelNames: [String] = {
-//    builtinLabelNames + (0..<7).map { "user\($0)" }
-//  }()
+  lazy var internalLabelNames: [String] = {
+    builtinLabelNames + (0..<7).map { "user\($0)" }
+  }()
 
   // Which output neuron corresponds to which label name in the mlmodel file.
-//  lazy var internalLabelIndices: [String: Int] = {
-//    Dictionary(uniqueKeysWithValues: zip(internalLabelNames, internalLabelNames.indices))
-//  }()
+  lazy var internalLabelIndices: [String: Int] = {
+    Dictionary(uniqueKeysWithValues: zip(internalLabelNames, internalLabelNames.indices))
+  }()
 
   init() {
     readLabelNames()
@@ -71,9 +60,8 @@ class Labels /*: ObservableObject*/{
     do {
       let data = try Data(contentsOf: labelNamesURL)
       labelNames = try JSONDecoder().decode(Array<String>.self, from: data)
-        print("reading")
     } catch {
-//      labelNames = builtinLabelNames
+      labelNames = builtinLabelNames
     }
   }
 
@@ -81,8 +69,6 @@ class Labels /*: ObservableObject*/{
     do {
       let data = try JSONEncoder().encode(labelNames)
       try data.write(to: labelNamesURL)
-//        self.pickerId += 1
-        print("saving")
     } catch {
       print("Error: \(error)")
     }
@@ -97,27 +83,10 @@ class Labels /*: ObservableObject*/{
    */
   func addLabel(_ label: String) {
     if !labelNames.contains(label) {
-        if labelNames.contains("Please add a label") {
-            labelNames = []
-        }
       labelNames.append(label)
-        print(labelNames)
       saveLabelNames()
     }
   }
-    
-    func resetLabel(){
-//        labelNames = ["Please add a label"]
-        labelNames = []
-        do {
-          let data = try JSONEncoder().encode(labelNames)
-          try data.write(to: labelNamesURL)
-//            self.pickerId += 1
-            print("saving")
-        } catch {
-          print("Error: \(error)")
-        }
-    }
 
   /**
     Converts an internal label, such as "user0", into a user-chosen label.
@@ -125,13 +94,13 @@ class Labels /*: ObservableObject*/{
     into text for display. (Used only for the neural network; for k-NN there
     is no difference between internal labels and user-chosen labels.)
    */
-//  func userLabel(for internalLabel: String) -> String {
-//    if let idx = internalLabelIndices[internalLabel], idx < labelNames.count {
-//      return labelNames[idx]
-//    } else {
-//      return internalLabel
-//    }
-//  }
+  func userLabel(for internalLabel: String) -> String {
+    if let idx = internalLabelIndices[internalLabel], idx < labelNames.count {
+      return labelNames[idx]
+    } else {
+      return internalLabel
+    }
+  }
 
   /**
     Looks up the internal label, such as "user0", that corresponds to a given
@@ -140,7 +109,7 @@ class Labels /*: ObservableObject*/{
     the neural network; for k-NN there is no difference between internal labels
     and user-chosen labels.)
    */
-//  func internalLabel(for userLabel: String) -> String {
-//    internalLabelNames[labels.labelIndices[userLabel]!]
-//  }
+  func internalLabel(for userLabel: String) -> String {
+    internalLabelNames[labels.labelIndices[userLabel]!]
+  }
 }
