@@ -11,21 +11,11 @@ import CoreML
 import Vision
 
 struct PredictionView: View {
-//    var trainNN = TrainNearestNeighborsViewController()
-//    var checkLabel = CheckLabel()
     @EnvironmentObject var selectedLabel: LabelsViewModel
-//    @State var id = 0
-//    @State var confirmResetDialog = false
-//    @State var newLabel = ""
     @State var isGalleryShowing = false
-//    @State var selectedImage: UIImage?
-//    @State var predictionLabel = "?"
-//    @State var predictionConf = 0.0
-//    @State var selectedLabel: String = "nothing"
-//    @State var test: [UIImage] = []
-//    var noLabel = "Please add a label"
-//    var nothingSelected = "nothing"
-//    var trained = "not trained"
+    @State var count = 0
+    @State var countR = 0
+    var testing = Testing()
     
     var body: some View {
         VStack{
@@ -60,6 +50,15 @@ struct PredictionView: View {
             }
             Text(selectedLabel.predictionLabel)
             Text(String(format: "%.1f%%", selectedLabel.predictionConf * 100))
+            Button(action: {
+                testing.testingRes()
+                count = testing.count
+                countR = testing.countRight
+                                    }){
+                                        Text("Trainieren")
+                                    }
+            Text(String(count))
+            Text(String(countR))
         }
         .onAppear{
             DispatchQueue.main.async{

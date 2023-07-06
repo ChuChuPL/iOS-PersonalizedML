@@ -5,7 +5,7 @@ import CoreML
  */
 enum Models: String {
 //  case emptyNearestNeighbors = "HandskNN"
-    case emptyNearestNeighbors = "PersonalizedkNN"
+    case emptyNearestNeighbors = "Personalized6kNN"
   case trainedNearestNeighbors = "NearestNeighbors"
 
   case emptyNeuralNetwork = "HandsEmpty"
@@ -37,9 +37,17 @@ extension Models {
     do {
       let config = MLModelConfiguration()
       config.computeUnits = .all
-
+        //funktioniert nicht
+//        if(Int(sqrt(Double(trainNN.count)))>3){
+//            print("new neighbor")
+////                config.parameters = [MLParameterKey.numberOfNeighbors: Int(sqrt(Double(trainNN.count)))]
+//            config.parameters = [MLParameterKey.numberOfNeighbors: 6]
+//        }
+//        print("count")
+//        print(trainNN.count)
       // You can override the model's hyperparameters like this:
       //config.parameters = [MLParameterKey.numberOfNeighbors: 10]
+//        print(try MLModel(contentsOf: url, configuration: config).parameterValue(for: .numberOfNeighbors))
 
       return try MLModel(contentsOf: url, configuration: config)
     } catch {

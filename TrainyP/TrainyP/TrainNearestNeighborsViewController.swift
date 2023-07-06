@@ -15,6 +15,7 @@ class TrainNearestNeighborsViewController {
   var imageLoader: ImageLoader!
     var cgImage: CGImage!
     var trueLabel: String!
+    var count=0
 //    var selectedImage = false
 //  var selected: Set<IndexPath> = []
 //  var alreadyTrained = Set<IndexPath>()
@@ -203,6 +204,8 @@ class TrainNearestNeighborsViewController {
       let updatableModelURL = Models.trainedNearestNeighborsURL
 
       let config = model.configuration
+        
+        count+=1
 
       let updateTask = try MLUpdateTask(forModelAt: updatableModelURL,
                                         trainingData: trainingData,

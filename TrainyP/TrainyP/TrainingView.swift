@@ -9,54 +9,18 @@ import SwiftUI
 import UIKit
 
 struct TrainingView: View {
-    var trainNN = TrainNearestNeighborsViewController()
+//    var trainNN = TrainNearestNeighborsViewController()
     var checkLabel = CheckLabel()
     @EnvironmentObject var selectedLabel: LabelsViewModel
     @State var id = 0
     @State var confirmResetDialog = false
     @State var newLabel = ""
     @State var isGalleryShowing = false
-//    @State var selectedImage: UIImage?
     @State var predictionLabel = "?"
     @State var predictionConf = 0.0
-//    @State var selectedLabel: String = "nothing"//    var noLabel = "Please add a label"
-//    var nothingSelected = "nothing"
-//    var trained = "not trained"
     
     var body: some View {
         NavigationView{
-//            HStack{
-//                Button{
-//                    confirmResetDialog = true
-//                } label: {
-//                    Text("Reset Model")
-//                }
-//                .padding(.init(top: 0, leading: 10, bottom: 10, trailing: 0))
-//                .confirmationDialog("Reset Model", isPresented: $confirmResetDialog, titleVisibility: .visible){
-//                    Button("Reset", role: .destructive){
-//                        Models.deleteTrainedNearestNeighbors()
-//                        Models.copyEmptyNearestNeighbors()
-//                        labels.resetLabel()
-//                        id = id + 1
-//                        selectedLabel.label = "nothing"
-//                    }
-//                    }message: {
-//                        Text("Do you want to reset the model?")
-//                }
-//                Spacer()
-//                Button(action: {
-//                    trainNN.model = Models.loadTrainedNearestNeighbors()
-//                    if let cgImage = selectedLabel.selectedImage?.cgImage{
-//                        trainNN.cgImage = cgImage
-//                    }
-//                    trainNN.trueLabel = selectedLabel.label
-//                    trainNN.train()
-//                }){
-//                    Text("Train")
-//                }
-//                .disabled(trainNN.disableButton(label: selectedLabel.label, image: selectedLabel.selectedImage))
-//                .padding(.init(top: 0, leading: 0, bottom: 10, trailing: 10))
-//            }
             VStack{
 //                Spacer()
                 
