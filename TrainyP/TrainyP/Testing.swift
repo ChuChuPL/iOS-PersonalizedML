@@ -30,6 +30,7 @@ class Testing{
         TestData(data: "test")
 //        TestData()
 //        print("startTesting")
+        //wurde ausgegeben, um die Anzahl der richtig klassifizierten Bilder zu erkennen
         for rightCount in self.right{
             print(rightCount)
         }
@@ -62,6 +63,7 @@ class Testing{
 //          let testMin = 0
           let testMax = testMin+20-1
           for fromURL in fileURLs(at: baseURL.appendingPathComponent(label)) {
+            //indexPic wurde genutzt, um das Training zu stoppen bei einer bestimmten Trainingsmenge
             if(indexPic>=80){
                 break
             }

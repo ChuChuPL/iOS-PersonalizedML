@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import CoreML
 import Vision
-
+//hat nicht funktioniert, weil die iMac's an der Uni eine neuere XCode Version besitzen und daher nicht mehr auf die Library zugegriffen werden kann
 class TestingBigData{
     var labelNames: [String] = ["chichi200", "FeiFei"]
     var res: [ResLabels] = []
@@ -127,7 +127,7 @@ class TestingBigData{
                 let imageOptions: [MLFeatureValue.ImageOption: Any] = [
                   .cropAndScale: VNImageCropAndScaleOption.scaleFill.rawValue
                 ]
-                let featureValue = try? MLFeatureValue(cgImage:                                      image.cgImage!, constraint: imageConstraint(model: model!), options: imageOptions)
+                let featureValue = try? MLFeatureValue(cgImage: image.cgImage!, constraint: imageConstraint(model: model!), options: imageOptions)
                 let prediction = predictor.predict(image: featureValue!)
             let predictionLabel = prediction!.label
         print(predictionLabel)

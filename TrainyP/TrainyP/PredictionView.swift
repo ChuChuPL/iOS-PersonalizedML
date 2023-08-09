@@ -13,9 +13,8 @@ import Vision
 struct PredictionView: View {
     @EnvironmentObject var selectedLabel: LabelsViewModel
     @State var isGalleryShowing = false
-    @State var count = 0
-    @State var countR = 0
-    var testing = Testing()
+    //Nur zum Testen des Modells gedacht gewesen
+//    var testing = Testing()
     
     var body: some View {
         VStack{
@@ -50,15 +49,12 @@ struct PredictionView: View {
             }
             Text(selectedLabel.predictionLabel)
             Text(String(format: "%.1f%%", selectedLabel.predictionConf * 100))
-            Button(action: {
-                testing.testingRes()
-                count = testing.count
-                countR = testing.countRight
-                                    }){
-                                        Text("Trainieren")
-                                    }
-            Text(String(count))
-            Text(String(countR))
+            //Nur zum Testen des Modells gedacht gewesen
+//            Button(action: {
+//                testing.testingRes()
+//                                    }){
+//                                        Text("Trainieren")
+//                                    }
         }
         .onAppear{
             DispatchQueue.main.async{
