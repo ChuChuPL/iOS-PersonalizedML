@@ -52,7 +52,7 @@ class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationContro
                     let imageOptions: [MLFeatureValue.ImageOption: Any] = [
                       .cropAndScale: VNImageCropAndScaleOption.scaleFill.rawValue
                     ]
-                    let featureValue = try? MLFeatureValue(cgImage:                                      image.cgImage!, constraint: imageConstraint(model: model!), options: imageOptions)
+                    let featureValue = try? MLFeatureValue(cgImage: image.cgImage!, constraint: imageConstraint(model: model!), options: imageOptions)
                     let prediction = predictor.predict(image: featureValue!)
                     self.parent.predictionLabel = prediction!.label
                     self.parent.predictionConf = prediction!.confidence
